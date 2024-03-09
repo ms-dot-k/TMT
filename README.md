@@ -156,7 +156,7 @@ sh test_cap.sh
 
 ## Pre-trained model checkpoints
 The pre-trained TMT model is available on [here](https://drive.google.com/file/d/15D3_gU2ajhF6ZfWPI8mFoqSM5_e6hgfO/view?usp=sharing). <br>
-The model is trained on CC3M, CC12M, ImageNet-1k, CommonVoice, COCO, and Flicrk8k. <br>
+The model is trained on CC3M, CC12M, ImageNet-1k, CommonVoice, COCO, and Flickr8k. <br>
 Please put the checkpoint in `data/checkpoints/`.
 
 ## Training the Model
