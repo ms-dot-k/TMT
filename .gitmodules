@@ -1,0 +1,6 @@
+[submodule "SEED"]
+	path = SEED
+	url = https://github.com/AILab-CVC/SEED
+[submodule "fairseq"]
+	path = fairseq
+	url = https://github.com/facebookresearch/fairseq
