@@ -27,8 +27,10 @@ This repository contains the PyTorch implementation of the following paper:
 - accelerate
 
 ### Datasets Download
-The training code example only uses COCO and Flickr8k.
-If you want to train the model with large dataset (CC12M and CC3M), please download datasets by referring to https://github.com/rom1504/img2dataset. And write your own dataset loader.
+The demonstrated example training recipe only involves COCO and Flickr8k, smaller than our setup used in the paper.
+If you wish to train the model with the same data configuration, using additional corpora (CC12M and CC3M), 
+please download them by referring to https://github.com/rom1504/img2dataset. 
+You would also need to write your dataset loader for this.
 
 SpokenCOCO dataset
 - https://groups.csail.mit.edu/sls/downloads/placesaudio/index.cgi
@@ -75,18 +77,18 @@ Flickr8k_audio
 
 ## 1. Extracting Speech Unit
 We directly utilized the pre-trained K-means cluster model of [link](https://github.com/facebookresearch/fairseq/tree/main/examples/textless_nlp/gslm/speech2unit).
-Please refer to the repository to extract speech unit (HuBERT Base + KM200).
-We use different output format with the repository (.unit), we save each speech unit by using
+Please refer to the repository to extract the speech unit (HuBERT Base + KM200).
+We use different output formats with the repository (.unit) -- we save each speech unit by using
 ```
 feat = FR.get_feature(file)
 pred = kmeans_model.predict(feat)
 pred = np.asarray(pred, dtype=np.int64)
 torch.save(pred, out_path + '.unit')
 ```
-Please put the extracted units as the above directory structure.
+Please put the extracted units in the above directory structure.
 
 ## 2. Unit-based Vocoder
-Please download pre-trained unit-based vocoder [CKPT](https://drive.google.com/file/d/15MVGWCfvt_ZjQwBR4sizQKFMb5NPQ3Qy/view?usp=drive_link) and [CFG](https://drive.google.com/file/d/15MOiXjrUJJHMdIF6bxCWIxvWwUw6z7Kj/view?usp=sharing).
+Please download the pre-trained unit-based vocoder [CKPT](https://drive.google.com/file/d/15MVGWCfvt_ZjQwBR4sizQKFMb5NPQ3Qy/view?usp=drive_link) and [CFG](https://drive.google.com/file/d/15MOiXjrUJJHMdIF6bxCWIxvWwUw6z7Kj/view?usp=sharing).
 Put `g_00950000` and `config.json` in `./Vocoder/` directory.
 
 ## 3. Image Unit Extractor and Decoder
@@ -106,9 +108,9 @@ Test Demo Jupyter Notebook for each task can be found at `demo.ipynb`.
 Pre-trained model is available, please find it below.
 
 ## Testing the pre-trained Model
-To test the model, modify some argument in `test.sh`. <br>
+To test the model, modify some arguments in `test.sh`. <br>
 Please refer below for the argument information.
-After properly setting the argument, run following command:
+After properly setting the argument, run the following command:
 ```shell
 # test example
 sh test.sh
@@ -117,7 +119,7 @@ sh test.sh
 The command will run the tests for 6 tasks, image captioning, iamge-to-speech captioning, text-to-image synthesis, speech-to-image synthesis, speech-to-text, and text-to-speech.
 
 It takes almost 1 day, mainly the image generation takes time.
-You can test on subset of tasks which is described below.
+You can test on a subset of tasks which is described below.
 
 Descriptions of important argument:
 ```shell
@@ -148,7 +150,7 @@ KARPATHY=path_to/Karpathy_split
 
 ### Test on fewer tasks
 You can also test the model on some selected tasks by changing the `test.sh`.
-For example, we can only test for captioning tasks, image captioning and image-to-speech captioning, by running `test_cap.sh`.
+For example, we can only test for captioning tasks, image captioning, and image-to-speech captioning, by running `test_cap.sh`.
 ```shell
 # test example
 sh test_cap.sh
@@ -160,9 +162,9 @@ The model is trained on CC3M, CC12M, ImageNet-1k, CommonVoice, COCO, and Flickr8
 Please put the checkpoint in `data/checkpoints/`.
 
 ## Training the Model
-To train the model, modify some argument in `train.sh`. <br>
+To train the model, modify some arguments in `train.sh`. <br>
 Please refer below for the argument information.
-After properly setting the argument, run following command:
+After properly setting the argument, run the following command:
 
 ```shell
 # training example (Distributed training)
@@ -179,17 +181,17 @@ Descriptions of training parameters are as follows:
 - `--spcoco_split_path`: data dir path to SpokenCOCO ('dir_to/SpokenCOCO', assuming the directory contains json files)
 - `--karpathy_split_path`: data dir path to Karpathy split ('dir_to/Karpathy_split')
 - `--checkpoint_dir`: directory for saving checkpoints
-- `--checkpoint` : saved checkpoint where the training is resumed from
+- `--checkpoint`: saved checkpoint where the training is resumed from
 - `--temp_dir`: temp directory where the evaluation files will be saved
 - `--batch_size`: batch size 
-- `--eval_step`: steps to perform evaluation
+- `--eval_step`: steps to perform the evaluation
 - `--lr`: learning rate
 - `--update_frequency`: gradient accumulation steps
 - `--generation_step`: steps to generate image during training (`--generate_im` should be set)
-- `--generate_im`: If it is set, image will be generated during training (super slow and consume large memory)
+- `--generate_im`: If it is set, the image will be generated during training (super slow and consumes large memory)
 - `--warmup`: If it is set, warmup lr scheduling is performed
 - `--tot_iters`: The total iteration for training.
-- `--fp16`: Wheter perform fp16 training
+- `--fp16`: Whether perform fp16 training
 
 - `--im_txt`: Include Image-to-Text Translation task
 - `--im_sp`: Include Image-to-Speech Translation task
