@@ -3,7 +3,7 @@
 This repository contains the PyTorch implementation of the following paper:
 > **TMT: Tri-Modal Translation between Speech, Image, and Text by Processing Different Modalities as Different Languages**<br>
 > Minsu Kim*, Jee-weon Jung*, Hyeongseop Rha, Soumi Maiti, Siddhant Arora, Xuankai Chang, Shinji Watanabe, and Yong Man Ro (*equal contribution)<br>
-> \[[Paper](https://arxiv.org/abs/2402.16021)\]
+> \[[Paper](https://arxiv.org/abs/2402.16021)\] \[[Sample](https://drive.google.com/file/d/1pboqMUx0D6mvTq41uElIo3wgc4dK49dQ/view?usp=sharing)\]
 
 <div align="center"><img width="90%" src="imgs/img.png?raw=true" /></div>
 
