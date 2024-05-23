@@ -7,6 +7,9 @@ This repository contains the PyTorch implementation of the following paper:
 
 <div align="center"><img width="90%" src="imgs/img.png?raw=true" /></div>
 
+## Qualitative Samples
+You can find generated samples for 6 multi-modal translation tasks by TMT at [here](https://drive.google.com/file/d/1pboqMUx0D6mvTq41uElIo3wgc4dK49dQ/view?usp=sharing). 
+
 ## Requirements
 - python 3.9
 - pytorch 2.12
